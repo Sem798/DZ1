@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Список сообщений</h1>
+<div class="row">
+{% for comment in comments %}
+    <div class="col-md-4">
+      <div class="card md-2">
+        <img class="card-img-top" src="{% static comment.image %}">
+        <div class="card-body">
+          <h5 class="card-title">{{ comment.title }}</h5>
+          <p class="card-text">{{ comment.description }}</p>
+          <a href="{% url 'comment_detail' comment.pk %}"
+            class="btn btn-primary">
+            Подробнее
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
